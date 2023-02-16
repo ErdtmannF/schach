@@ -6,23 +6,13 @@ public class Feld {
 	private FeldTyp typ;
 	private Figur figur;
 	private CoColor hintergrund;
+	private String name;
 
-	private Feld(FeldBuilder builder) {
+	public Feld(FeldBuilder builder) {
 		this.typ = builder.typ;
 		this.figur = builder.figur;
 		this.hintergrund = builder.hintergrund;
-	}
-
-	public FeldTyp getTyp() {
-		return this.typ;
-	}
-	
-	public Figur getFigur() {
-		return this.figur;
-	}
-
-	public CoColor getHintergrund() {
-		return this.hintergrund;
+		this.name = builder.name;
 	}
 
 	public static class FeldBuilder {
@@ -30,13 +20,13 @@ public class Feld {
 		private FeldTyp typ;
 		private Figur figur;
 		private CoColor hintergrund;
+		private String name;
 
 		public static FeldBuilder builder() {
 			return new FeldBuilder();
 		}
 
-		private FeldBuilder() {
-		}
+		private FeldBuilder() {	}
 
 		public FeldBuilder typ(FeldTyp typ) {
 			this.typ = typ;
@@ -53,6 +43,10 @@ public class Feld {
 			return this;
 		}
 		
+		public FeldBuilder name(String name) {
+			this.name = name;
+			return this;
+		}
 		public Feld build() {
 			return new Feld(this);
 		}
